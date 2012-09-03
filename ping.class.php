@@ -7,9 +7,9 @@ class ping {
 	/**
 	 * Send a ping request to a host.
 	 *
-	 * @param  string  $host
-	 * @param  int 	   $timeout
-	 * @return bool
+	 * @param	string	$host		Host name or IP address to ping
+	 * @param	int		$timeout	Timeout for ping in seconds
+	 * @return	bool				True if ping succeeds, false if not
 	 */
 	public static function send($host, $timeout = 1) {
 		if (extension_loaded('sockets')) {
@@ -27,9 +27,9 @@ class ping {
 	 *
 	 * Using sockets under Windows requires that the Application Pool in IIS be running under an account with local admin rights.
 	 *
-	 * @param  string  $host
-	 * @param  int 	   $timeout
-	 * @return bool
+	 * @param	string	$host		Host name or IP address to ping
+	 * @param	int		$timeout	Timeout for ping in seconds
+	 * @return	bool				True if ping succeeds, false if not
 	 */
 	protected static function socketSend($host, $timeout) {
 		try {
@@ -54,8 +54,8 @@ class ping {
 	 *
 	 * Ping command is specific to Windows host.
 	 *
-	 * @param  string  $host
-	 * @return bool
+	 * @param	string	$host	Host name or IP address to ping
+	 * @return	bool			True if ping succeeds, false if not
 	 */
 	protected static function execSend($host) {
 		$command = escapeshellcmd('ping -n 1 -w 1 ' . $host);
